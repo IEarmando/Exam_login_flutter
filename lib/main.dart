@@ -49,7 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   int _intentos = 0;
 
-  // Lista de usuarios de ejemplo
   final List<Usuario> _usuarios = [
     Usuario(
       nombre: "Armando Jersain",
@@ -71,7 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
         _intentos++;
       });
 
-      // Buscar usuario que coincida con login y password
       Usuario? usuarioEncontrado = _usuarios.firstWhere(
         (usuario) => 
           usuario.login == _loginController.text && 
@@ -85,7 +83,6 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       if (usuarioEncontrado.nombre.isNotEmpty) {
-        // Usuario encontrado, navegar a la pantalla de bienvenida
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -93,7 +90,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         );
       } else {
-        // Usuario no encontrado, mostrar mensaje de error
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Datos incorrectos'),
